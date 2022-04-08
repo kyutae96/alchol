@@ -1,5 +1,6 @@
 package com.alcohol.alcohol
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.TypedValue
@@ -8,6 +9,10 @@ import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    var alcohol_density : Double = 0.7894
+    var driver_quantity : Double? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -103,7 +108,22 @@ class MainActivity : AppCompatActivity() {
 //                    ※ 대법원 판례에 의해 피고인에게 가장 유리한 최고치 적용
                     var r : Double? = null
                     var p : Int? = null
+                    var c : Double? = null
+                    var result : Double? = null
+                    var time_end : Double? = null
                     var soju_ml : Int? = null
+                    var beer_ml : Int? = null
+                    var rice_ml : Int? = null
+                    var wisky_ml : Int? = null
+                    var wine_ml : Int? = null
+
+                    var soju_degree : Double? = null
+                    var beer_degree : Double? = null
+                    var rice_degree : Double? = null
+                    var wisky_degree : Double? = null
+                    var wine_degree : Double? = null
+
+
 
                     //R= 성별에 대한 계수(남자 0.86, 여자 0.64)
                     if (sex_male.isChecked){
@@ -120,12 +140,93 @@ class MainActivity : AppCompatActivity() {
                         val bottle_limit = soju_limit.text.toString().toInt()
                         soju_ml = bottle_limit * 360
                     } else if (soju_glass.isChecked){
-
+                        val glass_limit = soju_limit.text.toString().toInt()
+                        soju_ml = glass_limit * 48
                     }
+
+                    //beer_ml=맥주음주량
+                    if (beer_bottle.isChecked){
+                        val bottle_limit = beer_limit.text.toString().toInt()
+                        beer_ml = bottle_limit * 500
+                    } else if (beer_glass.isChecked){
+                        val glass_limit = beer_limit.text.toString().toInt()
+                        beer_ml = glass_limit * 200
+                    }
+
+                    //rice_ml=막걸리음주량
+                    if (rice_wine_bottle.isChecked){
+                        val bottle_limit = rice_wine_limit.text.toString().toInt()
+                        rice_ml = bottle_limit * 750
+                    } else if (rice_wine_glass.isChecked){
+                        val glass_limit = rice_wine_limit.text.toString().toInt()
+                        rice_ml = glass_limit * 300
+                    }
+
+                    //wisky_ml=양주음주량
+                    if (wisky_bottle.isChecked){
+                        val bottle_limit = wisky_limit.text.toString().toInt()
+                        wisky_ml = bottle_limit * 750
+                    } else if (wisky_glass.isChecked){
+                        val glass_limit = wisky_limit.text.toString().toInt()
+                        wisky_ml = glass_limit * 30
+                    }
+                    //wine_ml=와인음주량
+                    if (wine_bottle.isChecked){
+                        val bottle_limit = wine_limit.text.toString().toInt()
+                        wine_ml = bottle_limit * 750
+                    } else if (wine_glass.isChecked){
+                        val glass_limit = wine_limit.text.toString().toInt()
+                        wine_ml = glass_limit * 125
+                    }
+
+                    //degree 알코올도수
+                    if (!soju_edt_txt.text.isNullOrEmpty()){
+                        soju_degree = soju_edt_txt.text.toString().toDouble()/100
+                    }
+                    if (!beer_edt_txt.text.isNullOrEmpty()){
+                        beer_degree = beer_edt_txt.text.toString().toDouble()/100
+                    }
+                    if (!rice_wine_edt_txt.text.isNullOrEmpty()){
+                        rice_degree = rice_wine_edt_txt.text.toString().toDouble()/100
+                    }
+                    if (!wisky_edt_txt.text.isNullOrEmpty()){
+                        wisky_degree = wisky_edt_txt.text.toString().toDouble()/100
+                    }
+                    if (!wine_edt_txt.text.isNullOrEmpty()){
+                        wine_degree = wine_edt_txt.text.toString().toDouble()/100
+                    }
+
+
+                    //운전자가 섭취한 알코올의 양 (음주량ml * 술의농도% * 0.7894)
+                    driver_quantity = soju_ml!! * soju_degree!! * alcohol_density
+
+                    //c 혈중 알코올농도 최고치%
+                    c = (driver_quantity!! * 0.7)/(p * r!! * 10)
 
                     println(r)
                     println(p)
+                    println("soju_ml : $soju_ml")
+                    println("soju_degree : $soju_degree")
+                    println("beer_ml : $beer_ml")
+                    println("rice_ml : $rice_ml")
+                    println("wisky_ml : $wisky_ml")
+                    println("wine_ml : $wine_ml")
+                    println(driver_quantity)
+                    println(c)
 
+                    val time_over = time.text.toString().toDouble() / 60
+
+                    result = c - (time_over * 0.015)
+                    time_end = c / 0.015
+
+                    println("result : $result")
+
+                    val intent = Intent(this, ResultActivity::class.java)
+                    intent.putExtra("c",c.toString())
+                    intent.putExtra("result",result.toString())
+                    intent.putExtra("time_end",time_end.toString())
+
+                    this.startActivity(intent)
 
                 }
             }
