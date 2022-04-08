@@ -141,7 +141,6 @@
                         android:background="@drawable/border"
                         android:fontFamily="sans-serif-black"
                         android:gravity="right"
-                        android:inputType="number"
                         android:padding="5dp"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
@@ -249,7 +248,6 @@
                                 android:fontFamily="sans-serif-black"
                                 android:gravity="right"
                                 android:hint="19.0"
-                                android:inputType="number"
                                 android:padding="5dp"
                                 android:textColor="@color/black"
                                 android:textSize="15sp" />
@@ -284,7 +282,6 @@
                             android:background="@drawable/border"
                             android:fontFamily="sans-serif-black"
                             android:gravity="right"
-                            android:inputType="number"
                             android:padding="5dp"
                             android:textColor="@color/black"
                             android:textSize="15sp"
@@ -379,7 +376,6 @@
                             android:fontFamily="sans-serif-black"
                             android:gravity="right"
                             android:hint="4.5"
-                            android:inputType="number"
                             android:padding="5dp"
                             android:textColor="@color/black"
                             android:textSize="15sp" />
@@ -413,7 +409,6 @@
                             android:background="@drawable/border"
                             android:fontFamily="sans-serif-black"
                             android:gravity="right"
-                            android:inputType="number"
                             android:padding="5dp"
                             android:textColor="@color/black"
                             android:textSize="15sp"
@@ -506,7 +501,6 @@
                                 android:fontFamily="sans-serif-black"
                                 android:gravity="right"
                                 android:hint="6.0"
-                                android:inputType="number"
                                 android:padding="5dp"
                                 android:textColor="@color/black"
                                 android:textSize="15sp" />
@@ -542,7 +536,6 @@
                             android:background="@drawable/border"
                             android:fontFamily="sans-serif-black"
                             android:gravity="right"
-                            android:inputType="number"
                             android:padding="5dp"
                             android:textColor="@color/black"
                             android:textSize="15sp"
@@ -634,7 +627,6 @@
                                 android:fontFamily="sans-serif-black"
                                 android:gravity="right"
                                 android:hint="40.0"
-                                android:inputType="number"
                                 android:padding="5dp"
                                 android:textColor="@color/black"
                                 android:textSize="15sp" />
@@ -669,7 +661,6 @@
                             android:background="@drawable/border"
                             android:fontFamily="sans-serif-black"
                             android:gravity="right"
-                            android:inputType="number"
                             android:padding="5dp"
                             android:textColor="@color/black"
                             android:textSize="15sp"
@@ -763,7 +754,6 @@
                                 android:fontFamily="sans-serif-black"
                                 android:gravity="right"
                                 android:hint="12.5"
-                                android:inputType="number"
                                 android:padding="5dp"
                                 android:textColor="@color/black"
                                 android:textSize="15sp" />
@@ -797,7 +787,6 @@
                             android:background="@drawable/border"
                             android:fontFamily="sans-serif-black"
                             android:gravity="right"
-                            android:inputType="number"
                             android:padding="5dp"
                             android:textColor="@color/black"
                             android:textSize="15sp"
